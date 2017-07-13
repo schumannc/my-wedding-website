@@ -1,0 +1,32 @@
+<h1 class="text-center">Lista de Convidados</h1>
+<p class= "text-center">Total de Confirmados: <%= @cont %></p>
+<div class="container">
+<table>
+<thead>
+	<tr>
+		<th class="show-for-large-up">Data</th>
+		<th>Nome</th>
+		<th class="show-for-large-up">E-Mail</th>
+		<th>Qnt</th>
+		<th class="show-for-large-up">Telefone</th>
+		<th class="show-for-large-up">IP</th>
+		<th colspan="2">Options</th>
+	</tr>
+</thead>
+<tbody>
+	<% @confirmation.each do |confirmado| %>
+	<tr>
+		<td class="show-for-large-up"><%= confirmado.created_at %></td>
+		<td ><%= confirmado.name %></td>
+		<td class="show-for-large-up"><%= confirmado.email %></td>
+		<td><%= confirmado.guets %></td>
+		<td class="show-for-large-up"><%= confirmado.phone %></td>
+		<td class="show-for-large-up"><%= confirmado.ip %></td>
+		<td><%= link_to 'Editar', edit_confirmation_path(confirmado)%></td>
+		<td><%= link_to 'Excluir', confirmado, method: :delete, data: { confirm: "Tem certeza?" }%></td>
+	</tr>
+	<% end %>
+</tbody>
+
+</table>
+</div>

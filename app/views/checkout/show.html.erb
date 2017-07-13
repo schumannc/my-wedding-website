@@ -1,0 +1,16 @@
+<h1 class="text-center">Presentes</h1>
+<div class="row">
+<div class="small-12 columns">
+<% @orders.each do |order| %>
+<div class="panel">
+<p><%= order.name %> | <%= order.email %></p>
+<p><%= number_to_currency(order.amount, unit: "R$", separator: ",", delimiter: "") %> | <%= order.description %></p>
+<p><%= order.mensagem %></p>
+<p>Sucesso: <%= order.sucesso %><br>
+Pagseguro: <%= order.pagseguro %></p>
+<p><%= link_to 'Editar', edit_order_path(order)%>&nbsp;&nbsp;
+<%= link_to 'Deletar', order, method: :delete, data: { confirm: "Tem certeza?" }%></p>
+</div>
+<%end%>
+</div>
+</div>

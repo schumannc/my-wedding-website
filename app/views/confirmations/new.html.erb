@@ -1,0 +1,38 @@
+<% provide(:title, 'R.S.V.P') %>
+
+<h1 class="customfont-cursive text-center">Confirme a sua Presença!</h1>
+<div class="row text-center">
+<div class="small-12 medium-8 large-6 medium-centered large-centered columns">
+<div id="msg_success" class="msg_notice">Sua presença foi confirmada!</div>
+<div id="msg_sending" class="msg_notice">Enviando e-mail de confirmação<span>.</span><span>.</span><span>.</span></div>
+</div>
+</div>
+<div class="row">
+	<div class="small-12 medium-8 large-6 medium-centered large-centered columns">
+	<%= form_for(@confirmation, remote: true, html: {"data-type": "json"}) do |f| %>
+
+		<%= f.label :name , "Nome" %>
+		<%= f.text_field :name, placeholder: "Nome" %>
+
+		<%= f.label :email , "E-mail" %>
+		<%= f.email_field :email, placeholder: "exemplo@mail.com"%>
+        
+
+        <%= f.label :guets, "Convidados" %>
+        <%= select( :confirmation, :guets, options_for_select((1..10).map{|a| [a,a]}, 1))%>
+
+        <%= f.label :phone, "Telefone (opcional)"%>
+        <%= f.phone_field :phone, placeholder: "(99)9999-9999"%>
+        
+
+        <%= f.submit "Confirmar", class: "button expand" %>
+
+    <% end %>
+    </div>
+</div>
+
+<% content_for :javascript do %>
+<%= javascript_include_tag "jquery.stickyfooter.min",'data-turbolinks-track' => false %>
+<%= javascript_include_tag "adjust_page_height",'data-turbolinks-track' => false %>
+<%= javascript_include_tag "confirmations",'data-turbolinks-track' => true %>
+<%end%>

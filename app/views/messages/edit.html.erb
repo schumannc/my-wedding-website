@@ -1,0 +1,27 @@
+<h2 class="text-center">Editar Menssagem</h2>
+<%= form_for (@mensagem) do |f| %>
+   <div class="row">
+		<div class="small-12 medium-4 medium-offset-2 columns">
+			<%= f.text_field :name %>
+		</div>
+		<div class="small-12 medium-4 end columns">
+			<%= f.email_field :email%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-8 medium-offset-2 columns">
+		    <%= f.text_area :text, rows: 6 %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-2 medium-offset-8 columns">
+			<%= f.label "Confirmado?"%>
+			<%= select( :message, :confirmation, options_for_select([["Sim", true],["Não", false]], @mensagem.confirmation))%>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="small-12 medium-2 medium-offset-8 columns">
+			<%= f.submit "Salvar", class: "custom-button right" %>
+		</div>	
+	</div>
+<%end%>

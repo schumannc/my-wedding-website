@@ -1,0 +1,83 @@
+<table class="row">
+<tr>
+<td class="wrapper last">
+
+<table class="twelve columns">
+<tr>
+<td class="center panel">
+<center>
+          <!--conteudo do email-->
+
+          <table class="row">
+            <tr>
+              <td class="wrapper last">
+
+                <table class="twelve columns">
+                  <tr>
+                    <td class="center ">
+                      <center>
+
+                        <h4>Olá, <%=@user.name%></h4>
+                        <p>Sua presença foi confirmada</p>
+                        <p>Convidados - <%= @user.guets%></p>
+                        <p>Click no botão abaixo caso queira cancelar a sua confirmação</p>
+                        <p>Muito obrigado, Henrique e Pamela</p>
+
+                            
+                      </center>
+                    </td>
+                    <td class="expander"></td>
+                  </tr>
+                </table>
+
+            </td>
+            </tr>
+          </table>
+          <!-- FIM conteudo do email -->
+          <!--link para home page-->
+          <table class="container">
+            <tr>
+              <td>
+
+                <table class="block-grid three-up">
+                  <tr>
+                    <td>
+                      <!--one-->
+                      <table class="button radius">
+                        <tr>
+                          <td>
+                            <a href="http://www.pamehenrique.com/">Ir para o site</a>
+                          </td>
+              
+                        </tr>
+                      </table>
+
+                    </td><td>
+                    <!--two-->
+                    </td><td>
+                      <!--three-->
+                      <table class="button alert radius">
+                        <tr>
+                          <td>
+                            <%= link_to "Cancelar", email_confirmation_url(@user.confirm_token) %>
+                          </td>
+                        </tr> 
+                      </table>
+                </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+         <!--FIM link para home page-->
+</center>
+</td>
+<td class="expander"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+

@@ -1,0 +1,15 @@
+@media only screen and (min-width: 40.063em) { 
+.slider.show-for-landscape { 
+    .slick-slide{
+     max-height:400px;
+     position:relative;
+     top:-200px;
+    }
+    img{
+		width: 100%;
+	}
+}
+}
+.wrap_slider {
+    overflow:hidden;
+}

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 0
+  item: Louças
+  url: cuba
+  image_url: itens/cuba.png
+  valor: 900
+  arrecadado: 400
+  presente_id: 0
+

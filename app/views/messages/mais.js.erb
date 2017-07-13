@@ -1,0 +1,2 @@
+$('a[href="/messages/mais"]').parent().fadeOut();
+$('.painel_mensagens').append("<%= escape_javascript(render partial: 'painel_template', locals: { msg: @mensagem} ) %>"); 

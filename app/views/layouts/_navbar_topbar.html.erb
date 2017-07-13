@@ -1,0 +1,54 @@
+<!-- Navigation -->
+<div class="contain-to-grid sticky">
+  <%= link_to image_tag('logo.svg'), root_path, class: "mobile_logo show-for-small-only" %> 
+  <nav class="top-bar" data-topbar role="navigation" data-options="custom_back_text: true; back_text: Voltar; is_hover: false;mobile_show_parent_link: false; scrolltop : true">
+    <ul class="title-area">
+      <li class="name"></li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>MENU</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+
+      <div class="logo-wrapper hide-for-small-only">
+        <%= link_to image_tag('logo.svg'), root_path, class: "logo" %>
+      </div>
+
+      <!-- Right Nav Section -->
+      <ul class="left">
+        <li class="show-for-small-only"><a href="/#msg">MENSAGENS</a></li>
+        <li class="has-dropdown">
+          <a href="#">LOCAIS</a>
+          <ul class="dropdown">
+            <li><a href="/#cerimonia">CERIMÔNIA</a></li>
+            <li><%= link_to 'HOTÉIS', locais_path %></a></li>
+            <li><a href="/locais/#salao">SALÕES DE BELEZA</a></li>
+          </ul>
+        </li>
+        <li><%= link_to "R.S.V.P.", rsvp_path %></li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="right">
+       <li><%= link_to "PRESENTES", presentes_path %></li>
+       <li class="has-dropdown">
+       <a href="#">FOTOS</a>
+       <ul class="dropdown">
+          <li><%=link_to "GALERIA",  fotos_path%></li>
+          <li><%= link_to "INSTAGRAM", instagram_path %></li>
+       </ul>
+       <% if logged_in? %>
+       <li class="has-dropdown">
+          <a href="#">OUTROS</a>
+          <ul class="dropdown">
+            <li><%=link_to "ARRECADADO",  arrecadado_path%> </li>
+            <li><%=link_to "CONFIRMADOS",  confirmations_path%> </li>
+            <li><%=link_to "APROVAR MSG", login_admin_path%> </li>
+            <li><%=link_to "LOG-OUT", login_path, method: :delete%> </li>
+          </ul>
+        </li>
+        <%end%>
+      </ul>
+
+    </section>
+  </nav>
+</div><!-- /navigation -->

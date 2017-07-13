@@ -1,0 +1,79 @@
+<div class="mensagem">
+<div class="row">
+<div class="small-12 medium-8 medium-centered columns">
+<div id="msg_success" class="msg_notice">Sua mensagem foi enviada para aprovação dos noivos</div>
+<div id="msg_sending" class="msg_notice">Enviando e-mail de confirmação<span>.</span><span>.</span><span>.</span></div>
+</div>
+</div>
+	<input id="msg-1" name="escrever" type="radio">
+	<label for="msg-1">ESCREVER MENSAGEM</label>
+	<input id="msg-2" name="escrever" type="radio" checked>
+	<label for="msg-2">CANCELAR MENSAGEM</label>
+
+	<div class="hide-message">
+		<%= form_for(@mensagem, remote: true, html: {"data-type": "json"}) do |f| %>
+		<div class="row">
+			<div class="small-12 medium-4 medium-offset-2 columns">
+				<%= f.text_field :name, placeholder: "Nome" %>
+			</div>
+			<div class="small-12 medium-4 end columns">
+				<%= f.email_field :email, placeholder: "e-mail"%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-8 medium-offset-2 columns">
+			    <%= f.text_area :text, rows: 6, placeholder: "Mensagem (250 caracteres)" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-2 medium-offset-8 columns">
+				<%= f.submit "ENVIAR", class: "custom-button right" %>
+			</div>	
+		</div>
+		<%end%>
+	</div>
+</div>
+<div class="container_painel">
+	<div class="painel_mensagens">
+	<% @display_mensagem.each do |m| %>
+		<div class="painel_mensage row">
+		  <div class="medium-1 small-3 columns text-center">
+		    <div class="mail-img"><%= image_tag('mail.svg')%></div>
+		  </div>
+		  <div class="medium-11 small-9 columns">
+		  	<blockquote class="blk">"<%=m.text%>"<cite><%=m.name%> - <%=m.created_at.strftime("%d/%m/%y às %H:%M h")%></cite></blockquote>
+		  </div>	
+		</div>
+	<%end%>
+	<div id="cerimonia"></div>
+		<div class="text-center"><%= link_to "MAIS...", messages_mais_path, remote: true, class:"button radius" %></div>
+	</div>
+</div>
+
+<% content_for :javascript do %>
+<script type="text/javascript" data-turbolinks-track="true">
+$(function(){
+//Ajax
+	$('#new_message').on('ajax:success', function() {
+    
+	    $('#msg_sending').stop(true,true).fadeOut(function(){
+			$('#msg_success').fadeIn();
+		});
+      
+	}).on('ajax:beforeSend', function(){
+		$('input[type=text]').val("");
+	    $('input[type=email]').val("");
+		$('textarea').val("");
+		$('#msg-2').prop("checked", true);
+			
+		$('#msg_success').stop(true,true).fadeOut(function(){
+			$('#msg_sending').fadeIn();
+		});
+		
+	}).on('ajax:error', function(event, xhr, status, error) {
+		$('#msg_sending').stop(true,true).fadeOut();
+	});
+
+});
+</script>
+<%end%>

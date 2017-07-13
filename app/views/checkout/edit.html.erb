@@ -1,0 +1,18 @@
+<h2 class="text-center">Editar Order</h2>
+<%= form_for (@order) do |f| %>
+	<div class="row">
+		<div class="small-12 medium-2 medium-offset-4 columns">
+			<%= f.label "Sucesso"%>
+			<%= select( :order, :sucesso, options_for_select([["Sim", true],["Não", false]], @order.sucesso))%>
+		</div>	
+		<div class="small-12 medium-2 end columns">
+			<%= f.label "Pagseguro"%>
+			<%= select( :order, :pagseguro, options_for_select([["Sim", true],["Não", false]], @order.pagseguro))%>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="small-8 small-centered medium-2 medium-centered columns">
+			<%= f.submit "Salvar", class: "button expand" %>
+		</div>	
+	</div>
+<%end%>

@@ -1,0 +1,24 @@
+
+@mixin date-font {
+	 color:#fff;
+	 font-family: $custom-font2;
+	 margin: 0px;	
+}
+.wrap-date {
+    .columns{
+		background-image: url(<%= asset_path 'datestick.svg' %>);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		margin-bottom: em-calc(30);
+		h1 {
+			@include date-font;
+			padding-top: em-calc(15);
+		};
+		h4 {
+			@include date-font;
+			padding-bottom: em-calc(2);
+		};
+
+	};
+}

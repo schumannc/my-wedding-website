@@ -1,0 +1,32 @@
+<h1 class="text-center">Mensagens</h1>
+<div class="row">
+<div class="small-12 columns">
+<table>
+<thead>
+	<tr>
+		<th class="show-for-large-only">Data</th>
+		<th>Nome</th>
+		<th class="show-for-large-only">E-Mail</th>
+		<th class="show-for-large-only">Mensagem</th>
+		<th class="show-for-large-only">Aprovado</th>
+		<th colspan="3">Options</th>
+	</tr>
+</thead>
+<tbody>
+	<% @mensagens.each do |mensage| %>
+	<tr<%if mensage.confirmation? %> style="background-color:#BAF7BA;"<%end%>>
+		<td class="show-for-large-only"><%= mensage.created_at %></td>
+		<td><%= mensage.name %></td>
+		<td class="show-for-large-only"><%= mensage.email %></td>
+		<td class="show-for-large-only"><%= mensage.text %></td>
+		<td class="show-for-large-only"><%= mensage.confirmation %></td>
+		<td class="show-for-large-only"><%= link_to 'Confirmar', confirmado_path(mensage)%></td>
+		<td><%= link_to 'Editar', edit_message_path(mensage)%></td>
+		<td><%= link_to 'Excluir', mensage, method: :delete, data: { confirm: "Tem certeza?" }%></td>
+	</tr>
+	<% end %>
+</tbody>
+
+</table>
+</div>
+</div>

@@ -1,0 +1,21 @@
+<% provide(:title, "Log in") %>
+<div class="container">
+	<div class="row">
+	  <div class="medium-6 medium-offset-3">
+	  
+	    <%= form_for(:session, url: login_path) do |f| %>
+
+	      <%= f.label :user %>
+	      <%= f.text_field :user %>
+
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
+	  </div>
+	</div>
+	<div class="row">
+	   <div class="medium-6 medium-offset-3 text-center">
+	        <%= f.submit "Log in", class: "button" %>
+	   </div>
+	</div>
+	<% end %>
+</div>

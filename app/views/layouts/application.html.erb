@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Casamento Pamela e Henrique 2 de abril de 2016, cerimônia 19:00h Igreja São Pedro Apóstolo, Mooca SP, São Paulo">
+    <link rel="icon" href='<%= asset_path 'icon.png' %>' type="image/png" sizes="32x23">
+    <link rel="alternate" href="http://www.pamehenrique.com/" hreflang="pt-br" />
+    <title><%= content_for?(:title) ? "Pamela e Henrique - #{yield(:title)}" : "Pamela e Henrique" %></title>
+    <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "application",'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application",'data-turbolinks-track' => false %> 
+    <%=yield :top%>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MFFT3P"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MFFT3P');</script>
+  <!-- End Google Tag Manager -->
+
+  <div id="page">
+  <%= render 'layouts/navbar_topbar' %>
+  <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
+
+  <%= yield :foto_gallery %>
+  <%= yield :javascript %>
+</body>
+</html>
+

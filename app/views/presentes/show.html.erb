@@ -1,0 +1,26 @@
+<% provide(:title, "Itens") %>
+<h1 class="customfont-cursive text-center"><%= itens_titulo(@item.item)%></h1>
+
+<div class="row">
+<% @line_items.each do |item| %>
+
+	<%= render partial: "presentes/item_layout", locals: {
+		item: item.item,
+		image: item.image_url,
+		valor: item.valor,
+		arrecadado: item.arrecadado,
+		id: item.id,
+  	} %>
+  			  		
+<%end%>
+</div>
+<div class="row">
+<dl class="sub-nav">
+  <dd class=<%= 'active' if @item.url == 'sala'%>><a href=<%=presente_path('sala')%>>Sala</a></dd>
+  <dd class=<%= 'active' if @item.url == 'cozinha'%>><a href=<%=presente_path('cozinha')%>>Cozinha</a></dd>
+  <dd class=<%= 'active' if @item.url == 'quarto'%>><a href=<%=presente_path('quarto')%>>Quarto</a></dd>
+  <dd class=<%= 'active' if @item.url == 'quartodobebe'%>><a href=<%=presente_path('quartodobebe')%>>Quarto Bebê</a></dd>
+  <dd class=<%= 'active' if @item.url == 'banheiro'%>><a href=<%=presente_path('banheiro')%>>Banheiro</a></dd>
+  <dd class=<%= 'active' if @item.url == 'varanda'%>><a href=<%=presente_path('varanda')%>>Varanda</a></dd>
+</dl>
+</div>

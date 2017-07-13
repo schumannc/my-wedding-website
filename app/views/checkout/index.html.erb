@@ -1,0 +1,98 @@
+<% provide(:title, "Checkout") %>
+
+<h1 class="customfont-cursive text-center">Pagamento</h1>
+
+<% flash.each do |message_type, message| %>
+<div class="row">
+  <div class="custom-panel"><%= message %></div>
+</div>
+<% end %>
+
+<% if @order.errors.any? %>
+<div class="row">
+  <div id="custom-panel">
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+
+<fieldset>
+  <legend style="color:#D8D8D8;">Presente</legend>
+  
+  <div class="row">
+    <div id="presente_img" class="small-12 medium-8 medium-centered columns text-center"><a class="th" href="#"><%=image_tag(@line_item.image_url)%></a></div>
+  </div>
+  <div class="row">
+  <div class="small-12 medium-8 medium-centered columns">
+  <ul class="pricing-table">
+    <li class="title"><%=@line_item.item%></li>
+    <li class="price"><%= number_to_currency(params[:valor], unit: "R$", separator: ",", delimiter: "")%></li>
+  </ul>
+  </div>
+  </div> 
+  
+  <%= form_for @order, html:{id: "order"} do |f| %>
+  <div class="row">
+    <div class="small-12 medium-4 medium-offset-2 columns">
+       <%= f.label :name, "Nome"%>
+       <%= f.text_field :name, placeholder: "Nome"%>
+    </div>
+    <div class="small-12 medium-4 end columns">
+       <%= f.label :email, "E-mail"%>
+       <%= f.email_field :email, placeholder: "e-mail", required: true%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-8 medium-centered columns">
+      <%= f.label :mensagem, 'Mensagem' %>
+      <%= f.text_area :mensagem, rows: 10, placeholder:"Envie uma mensagem para os noivos" %>
+      <%= f.hidden_field :amount, value: params[:valor] %>
+      <%= f.hidden_field :presente_id, value: @item.id %>
+      <%= f.hidden_field :line_item_id, value: @line_item.id%>
+      <%= f.hidden_field :description, value: @line_item.item%>
+   </div>
+  <div class="row">
+    <div class="small-12 medium-8 medium-centered columns text-center">
+    <%= f.submit "PAGAR", class: "button radius large extend pagar_bnt" %>  
+    <%end%>
+    </div>
+  </div>
+<div class="row">
+  <div class="show-for-medium-up medium-8 medium-centered columns text-center">
+   <img src="https://imgmp.mlstatic.com/org-img/MLB/MP/BANNERS/PSJ/735x40_banner_psj_12x.jpg" alt="MercadoPago - Meios de pagamento" title="MercadoPago - Meios de pagamento" width="735" height="40"/>
+  </div>
+  <div class="show-for-small-only small-12 columns text-center">
+   <img src="https://imgmp.mlstatic.com/org-img/MLB/MP/BANNERS/PSJ/468x60_banner_psj_12x.jpg" alt="MercadoPago - Meios de pagamento" title="MercadoPago - Meios de pagamento" width="468" height="60"/>
+  </div>
+</div>
+</fieldset>
+
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h3 class="text-center"><small>Redirecionando para:</small></h3>
+  <div class="row">
+    <div class="small-12 medium-6 medium-centered columns text-center">
+    <%= image_tag('logo-mercadopago.png', alt: 'mercadopago') %>
+    <%= image_tag('ajax-loader.gif', alt: 'ajax-loader') %>
+    </div>
+  </div>
+  <div class="row">
+    <p class= "text-center"><small>Aguarde um momento...</small></p>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+<script type="text/javascript" data-turbolinks-track="true">
+$(function(){
+  $('#order').on("submit", function(){
+    $('#myModal').foundation('reveal', 'open');
+  });
+
+});
+</script>
+<% end %>

@@ -1,0 +1,25 @@
+<% provide(:title, "Falha") %>
+<h1 class="customfont-cursive text-center">Falha no Pagamento</h1>
+<div class="row">
+<div class="small-12 medium-8 medium-centered columns text-center">
+<%=image_tag('Emoticons_falha.png', id:"emoji")%>
+</div>
+</div>
+<div class="row">
+<div class="small-12 medium-5 medium-centered columns text-center">
+<p style="font-size: 0.8rem; color:#8E8E8E; ">
+Caso tenha problemas com o pagamento no cartão de crédito,
+recomendamos utilizar a opção pagar com boleto no MercadoPago.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="small-10 medium-6 medium-centered small-centered columns text-center">
+<%= link_to 'TENTAR NOVAMENTE', @order.url, class:"expand button  extend radius"%>
+</div>
+</div>
+<div class="row">
+<div class="small-10 medium-6 medium-centered small-centered columns text-center">
+<%= link_to 'VER OUTRO ITEM', presentes_path, class:"expand button extend radius"%>
+</div>
+</div>

@@ -1,0 +1,10 @@
+<% msg.each do |m| %>
+	<div class="painel_mensage row">
+	  <div class="medium-1 small-3 columns text-center">
+	  	<div class="mail-img"><%= image_tag('mail.svg')%></div>
+	  </div>
+	  <div class="medium-11 small-9 columns">
+	  	<blockquote class="blk">"<%=m.text%>"<cite><%=m.name%> - <%=m.created_at.strftime("%d/%m/%y às %H:%M h")%></cite></blockquote>
+	  </div>	
+	</div>
+<%end%>

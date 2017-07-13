@@ -1,0 +1,170 @@
+ input + label[for|="msg"], .custom-button{
+  @include button($bg: $jet);
+  border-radius:5px;
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.mensagem{
+	background-color: $silver;
+	padding: 20px;
+	text-align:center;
+	input[type="radio"]{
+	  display: none;
+	}	
+}
+
+.mensagem .hide-message {
+		height: 0px;
+		margin-top:0px;
+		overflow: hidden;
+		position: relative;
+		-moz-transition:  0.4s ease-in-out;
+		-o-transition:  0.4s ease-in-out;
+		-webkit-transition:  0.4s ease-in-out;
+		transition: 0.4s ease-in-out;
+}
+
+input#msg-1:checked + label[for|="msg"] {
+	display:none;
+}
+
+input#msg-2:checked + label[for|="msg"] {
+	display:none;
+}
+.container_painel{
+	background-color: $silver;
+	padding-bottom:30px;
+}
+
+.painel_mensage{
+
+	margin: auto;
+  	margin-top: 10px;
+    margin-bottom: 10px;
+	width: 98%;
+	background-color: $white;
+	-moz-box-shadow:    0 2px 2px $jet;
+    -webkit-box-shadow: 0 2px 2px $jet;
+    box-shadow:         0 2px 2px $jet;
+    padding: 3px;
+
+    small{
+     padding-top:5px;
+    }
+	h4{
+	 margin-top: 5px;
+	 margin-bottom:0px;
+	}
+	p{
+	  padding-bottom: 10px;
+	  margin: 0px 0px 10px 0px;
+	}
+	.customfont-cursive{
+	  color:#008CBA;
+	}
+}
+
+#msg_success{
+	display: none;
+}
+#msg_sending{
+	display: none;
+}
+
+.msg_notice{
+    
+	width:100%;
+	padding: 10px 0px 10px 0px;
+	color: white;
+	margin: 0px 0px 10px 0px;
+	margin-bottom:10px;
+	background-color: $primary-color;
+	border-radius:5px;
+	span:nth-child(1) {
+	    opacity: 0;
+	    -webkit-animation: dot 1.3s infinite;
+	    -webkit-animation-delay: 0.0s;
+	    animation: dot 1.3s infinite;
+	    animation-delay: 0.0s;
+
+	}
+	span:nth-child(2) {
+	    opacity: 0;
+	    -webkit-animation: dot 1.3s infinite;
+	    -webkit-animation-delay: 0.2s;
+	    animation: dot 1.3s infinite;
+	    animation-delay: 0.2s;
+	}
+	span:nth-child(3) {
+	    opacity: 0;
+	    -webkit-animation: dot 1.3s infinite;
+	    -webkit-animation-delay: 0.3s;
+	    animation: dot 1.3s infinite;
+	    animation-delay: 0.3s;
+    }
+}
+
+@keyframes dot{
+	0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes dot{
+	0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+input[type="submit"] {
+	border-radius: 5px;
+}
+
+.mail-img{
+	padding-top: 20px;
+	padding-bottom:20px;
+	min-width: 40px;
+	height:auto;
+}
+
+.painel_mensagens{
+	overflow:auto;
+	width: 70%;
+	height: 400px;
+	background-color: $silver;
+	margin:auto;
+	-moz-box-shadow:    inset 0 0 4px $jet;
+    -webkit-box-shadow: inset 0 0 4px $jet;
+    box-shadow:         inset 0 0 4px $jet;
+}
+.blk{
+    margin: 0px;
+}
+
+.mensagem input#msg-1:checked ~ .hide-message{
+   margin-top:16px;
+   height: 300px;
+}
+
+@media only screen and (max-width: 40em) { 
+	.mensagem input#msg-1:checked ~ .hide-message{
+	   height: 330px;
+	}
+	.painel_mensagens{
+		width: 90%;
+	}
+}

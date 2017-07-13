@@ -1,0 +1,51 @@
+  
+  .mobile_logo {
+    width: 100px;
+    height:  auto;
+    position: absolute;
+    z-index:1000;
+    left: 50%;
+    right: 50%;
+    top: 0px;
+    margin-left: -50px;
+  }
+
+@media only screen and (min-width: 40.063em) { 
+
+  .logo-wrapper .logo {
+    width: 150px;
+    height:  auto;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: -30px;
+    margin-left: -75px;
+    z-index:1000;
+  }
+
+  // Right part
+  .top-bar-section ul.right {
+    width: 50%;
+    padding-left: 120px;
+  }
+  
+  .top-bar-section ul.right li {
+    float:  left;
+  }
+
+  // Left part
+  .top-bar-section ul.left {
+    width:  50%;
+    padding-right: 120px;
+  }
+
+  .top-bar-section ul.left li {
+    float:  right;
+  }
+
+  .contain-to-grid.sticky{
+    border-top: 30px solid white;
+
+  }
+
+}

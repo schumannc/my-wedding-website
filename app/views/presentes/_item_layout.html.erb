@@ -1,0 +1,26 @@
+<div class="small-12 medium-6 large-4 columns end">
+<%=link_to image_tag(image), "#", class: "th [radius] presente_img" %>
+    <% porcent = arrecadado / valor * 100 %>
+    <% porcent = 100 if porcent>100 %>
+	<div class="custom-description"><%= item %>
+	<br><%= porcent.round.to_s %>% do valor total do item foi arrecadado</div>
+	<div class="progress small-11 round success">
+		<span class="meter" style="width:<%= porcent.round(2) %>%"></span>
+	</div>
+	<% if porcent < 100 %>
+	<div class="custom-description">Cotas (em até 12x sem juros):</div>
+		<%= form_tag(presente_order_path(presente_url: params[:url], line_item_id: id), method: "get", class: "text-center", id: item) do %>
+	    	<%= select_tag(:valor, options_for_select(cotas(valor, arrecadado)),include_blank: 'Selecione um valor') %>	
+	    	<%= submit_tag("Comprar",class: "button radius") %>
+	    <%end%>
+	<% else %>
+	<div class="custom-description">Cotas esgotadas!</div>
+	<div style="height:2.6875rem;margin-bottom:1.25rem;"></div>
+	        <div class="text-center">
+	        <div class="button success radius">Item Completo</div>
+	        </div>
+	<%end%>
+
+<div class="linha"></div>
+
+</div>

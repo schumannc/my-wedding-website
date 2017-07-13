@@ -1,0 +1,18 @@
+<% provide(:title, "Presentes") %>
+<%= render 'presentes/slider' %>
+<%= render 'presentes/intro' %>
+
+<div class="row">
+<% @item.each do |item| %>
+		<%= render partial: "presentes/presente_layout", locals: {
+	  	image: item.image_url,
+	  	arrecadado: item.arrecadado,
+	  	valor: item.total,
+	  	item: item.item,
+	  	url: item.url,
+	  	descricao: item.description,
+	  	detalhes: item.details,
+	  	item_id: item.id,
+	  	} %>
+<%end%>
+</div>

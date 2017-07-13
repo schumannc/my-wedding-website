@@ -1,0 +1,16 @@
+<div class="small-12 medium-6 large-4 columns end">
+<%=link_to image_tag(image), "#", class: "th [radius] presente_img" %>
+<% porcent = arrecadado / valor * 100 %>
+<% porcent = 100 if porcent>100 %>
+	<div class="custom-description"><%= item %><br>Total de cotas presenteadas: <%= porcent.round.to_s %>%</div>
+	<div class="progress small-11 round success">
+		<span class="meter" style="width:<%= porcent.round(2) %>%"%></span>
+	</div>
+    <div class="custom-description"><%= descricao %></div>
+    <% if porcent < 100 %>  
+	<%= link_to presente_titulo(item), presente_path(url), class: "button radius expand" %>
+	<% else %>
+		<%= link_to presente_titulo(item), presente_path(url), class: "button radius expand success" %>
+	<%end%>
+	<div class="linha"></div>
+</div>
